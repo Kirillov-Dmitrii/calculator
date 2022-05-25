@@ -1,10 +1,9 @@
 package com.skypro.calculator.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
-public class CalculaterServiceImpl implements CalculaterService {
+public class CalculatorServiceImpl implements CalculatorService {
 
 
     public String greeting() {
