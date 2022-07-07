@@ -1,22 +1,18 @@
 package com.skypro.calculator.service;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.skypro.calculator.excepsion.ZeroDivideExeption;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorServiceImplTest {
-    int a;
-    int b;
-    int c;
+    final int ZERO = 0;
+    final int ONE = 1;
+    final int TWO = 2;
+    final int TREE = 3;
     private final CalculatorServiceImpl out = new CalculatorServiceImpl();
 
-    @BeforeEach
-    public void setUp() {
-        a = 2;
-        b = 2;
-        c = 0;
-    }
 
 
     @Test
@@ -29,43 +25,41 @@ class CalculatorServiceImplTest {
     }
 
     @Test
-    void shpuldShowPlusOperation() {
-        String expected = out.showPlusOperation(a, b);
-        String actual = a + " + " + b + " = " + (a + b);
+    void shouldShowPlusOperation() {
+        String expected = out.showPlusOperation(ONE, TWO);
+        String actual = ONE + " + " + TWO + " = " + (ONE + TWO);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void shouldShowMinusOperation() {
-        String expected = out.showMinusOperation(a, b);
-        String actual = a + " - " + b + " = " + (a - b);
+        String expected = out.showPlusOperation(ONE, TWO);
+        String actual = ONE + " - " + TWO + " = " + (ONE - TWO);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void shouldShowMultiplyOperation() {
-        String expected = out.showMultiplyOperation(a, b);
-
-        String actual = a + " * " + b + " = " + (a * b);
+        String expected = out.showPlusOperation(ONE, TWO);
+        String actual = ONE + " * " + TWO + " = " + (ONE * TWO);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void shouldShowDivideOperation() {
-        String expected = out.showDivideOperation(a, b);
-
-        String actual = a + " / " + b + " = " + (a / b);
+        String expected = out.showPlusOperation(ONE, TWO);
+        String actual = ONE + " / " + TWO + " = " + (ONE / TWO);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void showThrowIllegalArgumentExceptionDivideOperationWithMinusOpetator() {
-        Assertions.assertThrows(IllegalArgumentException.class,
-                () -> out.showDivideOperation(a, c)
+    void showThrowIllegalArgumentExceptionDivideOperationWithMinusOperator() {
+        Assertions.assertThrows(ZeroDivideExeption.class,
+                () -> out.showDivideOperation(ONE, ZERO)
         );
     }
 }
